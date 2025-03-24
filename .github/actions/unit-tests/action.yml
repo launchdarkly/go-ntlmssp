@@ -1,5 +1,5 @@
 name: Unit Tests
-description: "Runs Go Server SDK's unit tests + linters and optionally gathers coverage."
+description: "Runs unit tests + linters and optionally gathers coverage."
 inputs:
   lint:
     description: 'Whether to run linters.'

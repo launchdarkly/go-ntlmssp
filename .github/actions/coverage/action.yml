@@ -1,5 +1,5 @@
 name: Coverage
-description: "Runs Go Server SDK's code-coverage checker."
+description: "Runs code-coverage checker."
 inputs:
   enforce:
     description: 'Whether to enforce coverage thresholds.'
@@ -36,6 +36,6 @@ runs:
           if [ "${{ inputs.enforce }}" == "true" ]; then
             exit 1
           fi
-        else 
+        else
           echo "Code is fully covered!"
         fi
