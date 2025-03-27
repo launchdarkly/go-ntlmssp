@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"encoding/base64"
 	"io"
-	"io/ioutil"
 	"net/http"
 	"strings"
 )
@@ -47,7 +46,7 @@ func (l Negotiator) RoundTrip(req *http.Request) (res *http.Response, err error)
 		}
 
 		req.Body.Close()
-		req.Body = ioutil.NopCloser(bytes.NewReader(body.Bytes()))
+		req.Body = io.NopCloser(bytes.NewReader(body.Bytes()))
 	}
 	// first try anonymous, in case the server still finds us
 	// authenticated from previous traffic
@@ -64,11 +63,11 @@ func (l Negotiator) RoundTrip(req *http.Request) (res *http.Response, err error)
 	if !resauth.IsNegotiate() && !resauth.IsNTLM() {
 		// Unauthorized, Negotiate not requested, let's try with basic auth
 		req.Header.Set("Authorization", string(reqauth))
-		if _, err := io.Copy(ioutil.Discard, res.Body); err != nil {
+		if _, err := io.Copy(io.Discard, res.Body); err != nil {
 			return nil, err
 		}
 		res.Body.Close()
-		req.Body = ioutil.NopCloser(bytes.NewReader(body.Bytes()))
+		req.Body = io.NopCloser(bytes.NewReader(body.Bytes()))
 
 		res, err = rt.RoundTrip(req)
 		if err != nil {
@@ -82,7 +81,7 @@ func (l Negotiator) RoundTrip(req *http.Request) (res *http.Response, err error)
 
 	if resauth.IsNegotiate() || resauth.IsNTLM() {
 		// 401 with request:Basic and response:Negotiate
-		if _, err := io.Copy(ioutil.Discard, res.Body); err != nil {
+		if _, err := io.Copy(io.Discard, res.Body); err != nil {
 			return nil, err
 		}
 		res.Body.Close()
@@ -108,7 +107,7 @@ func (l Negotiator) RoundTrip(req *http.Request) (res *http.Response, err error)
 			req.Header.Set("Authorization", "Negotiate "+base64.StdEncoding.EncodeToString(negotiateMessage))
 		}
 
-		req.Body = ioutil.NopCloser(bytes.NewReader(body.Bytes()))
+		req.Body = io.NopCloser(bytes.NewReader(body.Bytes()))
 
 		res, err = rt.RoundTrip(req)
 		if err != nil {
@@ -125,7 +124,7 @@ func (l Negotiator) RoundTrip(req *http.Request) (res *http.Response, err error)
 			// Negotiation failed, let client deal with response
 			return res, nil
 		}
-		if _, err := io.Copy(ioutil.Discard, res.Body); err != nil {
+		if _, err := io.Copy(io.Discard, res.Body); err != nil {
 			return nil, err
 		}
 		res.Body.Close()
@@ -141,7 +140,7 @@ func (l Negotiator) RoundTrip(req *http.Request) (res *http.Response, err error)
 			req.Header.Set("Authorization", "Negotiate "+base64.StdEncoding.EncodeToString(authenticateMessage))
 		}
 
-		req.Body = ioutil.NopCloser(bytes.NewReader(body.Bytes()))
+		req.Body = io.NopCloser(bytes.NewReader(body.Bytes()))
 
 		return rt.RoundTrip(req)
 	}
