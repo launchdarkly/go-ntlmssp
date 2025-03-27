@@ -27,7 +27,6 @@ runs:
       with:
         name: Coverage-result-${{ steps.go-version.outputs.version }}
         path: build/coverage*
-        overwrite: true
 
     - name: Enforce coverage
       shell: bash
