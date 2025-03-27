@@ -33,3 +33,4 @@ runs:
       with:
         name: Test-result-${{ inputs.test-target }}${{ steps.go-version.outputs.version }}
         path: junit_report.xml
+        overwrite: true
