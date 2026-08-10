@@ -1,0 +1,11 @@
+# No linters are configured here -- the defaults are intentional. This file
+# exists solely to exempt vendored upstream code from linting.
+#
+# internal/md4 is kept byte-for-byte identical to golang.org/x/crypto/md4 so it
+# can be diffed against, and re-synced from, upstream. It is not written to this
+# repository's lint standards (it trips errcheck on unchecked hash.Write calls,
+# which never return an error), and we would rather keep the copy faithful than
+# annotate it.
+issues:
+  exclude-dirs:
+    - internal/md4
