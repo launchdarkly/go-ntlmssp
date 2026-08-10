@@ -7,6 +7,8 @@ on:
 jobs:
   check-go-eol:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     outputs:
       latest: ${{ steps.parse.outputs.latest }}
       penultimate: ${{ steps.parse.outputs.penultimate }}

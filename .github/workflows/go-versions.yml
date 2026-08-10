@@ -37,6 +37,8 @@ on:
 jobs:
   go-versions:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     outputs:
       latest: ${{ steps.set-env.outputs.latest }}
       penultimate: ${{ steps.set-env.outputs.penultimate }}

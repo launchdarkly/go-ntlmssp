@@ -11,12 +11,16 @@ on:
 
 jobs:
   go-versions:
+    permissions:
+      contents: read
     uses: ./.github/workflows/go-versions.yml
 
   # Runs the common tasks (unit tests, lint, contract tests) for each Go version.
   test-linux:
     name: ${{ format('Linux, Go {0}', matrix.go-version) }}
     needs: go-versions
+    permissions:
+      contents: read
     strategy:
       # Let jobs fail independently, in case it's a single version that's broken.
       fail-fast: false
@@ -30,6 +34,8 @@ jobs:
     name: ${{ format('Windows, Go {0}', matrix.go-version) }}
     runs-on: windows-2022
     needs: go-versions
+    permissions:
+      contents: read
     strategy:
       fail-fast: false
       matrix:
