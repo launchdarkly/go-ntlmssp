@@ -2,6 +2,13 @@
 
 All notable changes to the project will be documented in this file. This project adheres to [Semantic Versioning](http://semver.org).
 
+## [1.0.4](https://github.com/launchdarkly/go-ntlmssp/compare/v1.0.3...v1.0.4) (2026-08-11)
+
+
+### Bug Fixes
+
+* Remove golang.org/x/crypto dependency by vendoring md4 ([#12](https://github.com/launchdarkly/go-ntlmssp/issues/12)) ([7fc6c8a](https://github.com/launchdarkly/go-ntlmssp/commit/7fc6c8ad9dc2d536ee76128c922b1c9565cae79e))
+
 ## [1.0.3](https://github.com/launchdarkly/go-ntlmssp/compare/v1.0.2...v1.0.3) (2025-11-21)
 
 
