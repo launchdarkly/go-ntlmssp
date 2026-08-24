@@ -2,6 +2,13 @@
 
 All notable changes to the project will be documented in this file. This project adheres to [Semantic Versioning](http://semver.org).
 
+## [1.0.5](https://github.com/launchdarkly/go-ntlmssp/compare/v1.0.4...v1.0.5) (2026-08-24)
+
+
+### Bug Fixes
+
+* Bump minimum Go version to 1.26 ([#16](https://github.com/launchdarkly/go-ntlmssp/issues/16)) ([116bd40](https://github.com/launchdarkly/go-ntlmssp/commit/116bd403a0b037f53619f1074c9b4f6eb3b58761))
+
 ## [1.0.4](https://github.com/launchdarkly/go-ntlmssp/compare/v1.0.3...v1.0.4) (2026-08-11)
 
 
