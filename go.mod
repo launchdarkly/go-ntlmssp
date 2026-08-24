@@ -1,3 +1,3 @@
 module github.com/launchdarkly/go-ntlmssp
 
-go 1.24.0
+go 1.26.0
